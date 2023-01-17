@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    font-size: 18px;
+    line-height: 28px;    
+  }
+  .descr {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .descrText {
+    color: rgba(var(--color-black700), 0.6);
+  }
+  .value {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: Krona One;
+  }
+  .rightCol {
+    // width: 100px;
+  }
+}
+
+.wrapperClicked {
+  cursor: pointer;
+  .title {
+    transition: all .3s;
+  }
+  &:hover {
+    .title {
+      padding-left: 15px;
+    }
+  }
+}

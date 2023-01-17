@@ -1,0 +1,6 @@
+@import '../../assets/styles/sass/mixins';
+
+.wrapper {
+  @include box;
+  padding: 24px;
+}

@@ -1,0 +1,9 @@
+:root {
+  --color-bg: red;
+  /* Цвета для состояний погоды */
+  --color-sunny: #FBC92D;
+  /* Текст */
+  --color-black: #000;
+  --color-black700: 54, 49, 48;
+  --color-white: 255, 255, 255;
+}

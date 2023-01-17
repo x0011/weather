@@ -1,0 +1,43 @@
+@import '../../shared/assets/styles/sass/mixins';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.humidity {
+  margin-top: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: rgba(var(--color-black700), .6);
+  & > span {
+    margin-left: 4px;
+  }
+}
+
+.time {
+  font-weight: 400;
+  font-size: 16px;
+  font-family: Krona One;
+  margin-top: 8px;
+  color:rgba(var(--color-black700), .6);
+  margin-top: 15px;
+}
+
+.icon {
+  width: 32px;
+}

@@ -1,0 +1,5 @@
+@mixin box {
+  background-color: rgba(var(--color-white), 1);
+  border: 2px solid var(--color-black);
+  box-shadow: 4px 4px 0px var(--color-black);
+}

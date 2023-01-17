@@ -1,0 +1,31 @@
+.wrapper {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 311px;
+  background-color: var(--color-sunny);
+  padding: 8px 0px;
+  margin-top: 25px;
+  .condition {
+    display: block;
+  }
+  .temp {
+    font-weight: 400;
+    font-size: 52px;
+  }
+
+  .feelsLike {
+    display: block;
+    margin-top: 15px;
+    color: rgba(var(--color-black700), 0.55);
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .condition {
+    color: rgba(var(--color-black700), 1);
+    margin-top: 18px;
+    font-weight: 400;
+    font-size: 24px;
+    font-family: Krona One;
+  }
+}

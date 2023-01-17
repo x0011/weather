@@ -1,0 +1,11 @@
+.unit {
+  margin-left: 5px;
+  &::before {
+    content: '\00B0';
+  }
+}
+.deg {
+  &::before {
+    content: '\00B0';
+  }
+}

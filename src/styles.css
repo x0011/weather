@@ -1,0 +1,37 @@
+@import './shared/assets/styles/variables.css';
+@import './shared/assets/styles/fonts.css';
+@import '../node_modules/reset-css/reset.css'; 
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:
+  linear-gradient(
+    #CB9B31, #CB9B31 1px, transparent 0px
+  ),
+  linear-gradient(
+  90deg,
+  #CB9B31, #CB9B31 1px, transparent 0px
+  );
+  background-size: 40px 40px;
+  background-position: center -1px;
+  background-color: var(--color-sunny);
+  font-family: Inter;
+}
+
+h1, h2,h3, h4, h5, h6 {
+  font-family: Krona One;
+  font-style: normal;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 18px;
+}

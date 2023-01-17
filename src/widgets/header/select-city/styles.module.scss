@@ -1,0 +1,14 @@
+.wrapper {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location {
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 500;
+  color: rgba(var(--color-black700), $alpha: .6);
+  line-height: 20px;
+}

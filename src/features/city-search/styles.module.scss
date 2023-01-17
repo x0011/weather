@@ -1,0 +1,13 @@
+.city {
+  width: 100%;
+  height: 56px;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  padding: 16px;
+  font-family: Inter;
+  &:focus {
+    outline: none;
+  }
+  margin-top: 16px;
+}

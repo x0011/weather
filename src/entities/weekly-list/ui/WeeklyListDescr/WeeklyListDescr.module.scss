@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  .temp {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 26px;
+  }
+  .tempDay {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: Krona One;
+  }
+  .tempNight {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(var(--color-black700), .6);
+  }
+}
+
+.icon {
+  width: 32px;
+}
