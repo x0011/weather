@@ -1,10 +1,11 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   .title {
     font-size: 18px;
-    line-height: 28px;    
+    line-height: 28px;
+    color: rgba(var(--color-base-text), 1);
   }
   .descr {
     font-weight: 500;
@@ -12,13 +13,14 @@
     line-height: 20px;
   }
   .descrText {
-    color: rgba(var(--color-black700), 0.6);
+    color: var(--color-second-text);
   }
   .value {
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
     font-family: Krona One;
+    color: rgba(var(--color-base-text), 1);
   }
   .rightCol {
     // width: 100px;

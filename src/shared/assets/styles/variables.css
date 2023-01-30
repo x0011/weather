@@ -1,9 +1,23 @@
-:root {
-  --color-bg: red;
-  /* Цвета для состояний погоды */
-  --color-sunny: #FBC92D;
-  /* Текст */
-  --color-black: #000;
+:root[data-theme="light"] {
+  --color-bg: #FBC92D;
+  --color-bg-grid: #CB9B31;
+  --color-base-text: 54, 49, 48;
+  --color-second-text: rgba(var(--color-base-text), .6);
+  --color-second-layout: #FFF;
+  --color-shadow: rgba(var(--color-base-text), 1);
+  --color-action-btn: #000;
   --color-black700: 54, 49, 48;
   --color-white: 255, 255, 255;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #1B394F;
+  --color-bg-grid: #455E6F;
+  --color-base-text: 244, 243, 243;
+  --color-second-text: rgba(var(--color-base-text), .6);
+  --color-shadow: #17242D;
+  --color-second-layout: #335875;
+  --color-black700: 54, 49, 48;
+  --color-white: 255, 255, 255;
+  --color-action-btn: rgba(var(--color-base-text), 1);
 }

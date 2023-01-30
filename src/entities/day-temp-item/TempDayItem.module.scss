@@ -23,7 +23,7 @@
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: rgba(var(--color-black700), .6);
+  color: rgba(var(--color-base-text), 1);
   & > span {
     margin-left: 4px;
   }
@@ -34,8 +34,12 @@
   font-size: 16px;
   font-family: Krona One;
   margin-top: 8px;
-  color:rgba(var(--color-black700), .6);
+  color: rgba(var(--color-base-text), 1);
   margin-top: 15px;
+}
+
+.temp {
+  color: rgba(var(--color-base-text), 1);
 }
 
 .icon {

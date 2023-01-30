@@ -1,64 +1,78 @@
 import React, { useEffect, useState } from 'react';
 import styles from './character.module.scss';
-import sunnyImg from './assets/img/sunny.svg';
 import { useTypedSelector } from '../../shared/model/store';
 import { Container } from '../../shared/ui/container/container';
+import { ReactComponent as SunnySVG } from './assets/img/sunny.svg';
+import { ReactComponent as SunnyNightSVG } from './assets/img/night/clear-sky.svg';
+import { ReactComponent as RainSVG } from './assets/img/rain.svg';
+import { ReactComponent as SnowSVG } from './assets/img/snow.svg';
+import { ReactComponent as ThunderstormSVG } from './assets/img/thunderstorm.svg';
+import { ReactComponent as RainshowerSVG } from './assets/img/rainshower.svg';
+import { ReactComponent as FogSVG } from './assets/img/fog.svg';
+import { ReactComponent as DrizzleSVG } from './assets/img/drizzle.svg';
+import { ReactComponent as DrizzleNightSVG } from './assets/img/night/drizzle.svg';
+import { ReactComponent as HeavysnowSVG } from './assets/img/heavysnow.svg';
+import { ReactComponent as OvercastSVG } from './assets/img/overcast.svg';
+import { ReactComponent as PartlycloudySVG } from './assets/img/partlycloudy.svg';
+import { ReactComponent as PartlycloudyNightSVG } from './assets/img/night/partlycloudy.svg';
+import { ReactComponent as MostlyclearSVG } from './assets/img/mostlyclear.svg';
+import { ReactComponent as MostlyclearNightSVG } from './assets/img/night/mostlyclear.svg';
 
 const characterCodes = [
   {
     codes: [0],
-    img: './assets/img/sunny.svg',
-    nightImg: './assets/img/night/clear-sky.svg',
+    img: SunnySVG,
+    nightImg: SunnyNightSVG,
   },
   {
     codes: [56, 57, 61, 63, 65, 66, 67],
-    img: './assets/img/rain.svg',
-    nightImg: './assets/img/rain.svg',
+    img: RainSVG,
+    nightImg: RainSVG,
   },
   {
     codes: [71, 73, 75],
-    img: './assets/img/snow.svg',
-    nightImg: './assets/img/snow.svg',
+    img: SnowSVG,
+    nightImg: SnowSVG,
   },
   {
     codes: [95, 96, 99],
-    img: './assets/img/thunderstorm.svg',
-    nightImg: './assets/img/thunderstorm.svg',
+    img: ThunderstormSVG,
+    nightImg: ThunderstormSVG,
   },
   {
     codes: [80, 81, 82],
-    img: './assets/img/rainshower.svg',
-    nightImg: './assets/img/rainshower.svg',
+    img: RainshowerSVG,
+    nightImg: RainshowerSVG,
   },
   {
     codes: [45, 45],
-    img: './assets/img/fog.svg',
-    nightImg: './assets/img/fog.svg',
+    img: FogSVG,
+    nightImg: FogSVG,
   },
   {
     codes: [51, 53, 55],
-    img: './assets/img/drizzle.svg',
-    nightImg: './assets/img/night/drizzle.svg',
+    img: DrizzleSVG,
+    nightImg: DrizzleNightSVG,
   },
   {
     codes: [85, 86, 77],
-    img: './assets/img/heavysnow.svg',
-    nightImg: './assets/img/heavysnow.svg',
+    img: HeavysnowSVG,
+    nightImg: HeavysnowSVG,
   },
   {
     codes: [3],
-    img: './assets/img/overcast.svg',
-    nightImg: './assets/img/overcast.svg',
+    img: OvercastSVG,
+    nightImg: OvercastSVG,
   },
   {
     codes: [1],
-    img: './assets/img/mostlyclear.svg',
-    nightImg: './assets/img/night/mostlyclear.svg',
+    img: MostlyclearSVG,
+    nightImg: MostlyclearNightSVG,
   },
   {
     codes: [2],
-    img: './assets/img/partlycloudy.svg',
-    nightImg: './assets/img/night/partlycloudy.svg',
+    img: PartlycloudySVG,
+    nightImg: PartlycloudyNightSVG,
   },
 ];
 
@@ -68,25 +82,28 @@ const getImgByCode = (code: number) => {
     const { codes } = img;
     return codes.indexOf(code) !== -1;
   })[0];
-  return time > 20 ? imgLink.nightImg : imgLink.img;
+  return time > 20 || time < 8 ? imgLink.nightImg : imgLink.img;
 };
 
-export const Character:React.FC = () => {
-  const [img, setImg] = useState<string | null>(null);
+interface ICharacter {
+  className?: string,
+}
+
+export const Character:React.FC<ICharacter> = ({ className }) => {
+  // eslint-disable-next-line max-len
+  const [CharacterImg, setCharacter] = useState < any | null>(null);
   const { current } = useTypedSelector((state) => state.weather);
   const weathercode = current ? current.weathercode : null;
   useEffect(() => {
     if (current) {
       const imgLink = getImgByCode(current.weathercode);
-      const characterImg = import(`${imgLink}`);
-      characterImg.then((data) => {
-        setImg(data.default);
-      });
+      setCharacter(imgLink);
     }
   }, [weathercode]);
   return (
     <Container>
-      <img className={styles.img} src={img || ''} alt="" />
+      {/* <img className={styles.img} src={img || ''} loading="eager" alt="" /> */}
+      {CharacterImg && <CharacterImg className={[styles.character, className].join(' ')} />}
     </Container>
   );
 };

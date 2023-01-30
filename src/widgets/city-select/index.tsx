@@ -7,7 +7,6 @@ export const CitySelectWidget = () => {
   return (
     <Container>
       <CitySearch />
-      <div className={styles.findMe} />
     </Container>
   );
 };

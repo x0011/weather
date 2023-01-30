@@ -1,3 +1,20 @@
 .wrapper {
   margin-top: 32px;
 }
+
+.report {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  font-family: Krona One;
+  text-decoration: none;
+  color: rgba(var(--color-base-text), 1);
+  &:visited {
+    color: var(--color-black);
+
+  }
+}
+
+.arrowStroke {
+  stroke: rgba(var(--color-base-text), 1);
+}

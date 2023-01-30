@@ -4,6 +4,7 @@ import { useTypedSelector } from '../../shared/model/store';
 import { Card } from '../../shared/ui/card/card';
 import { ItemDivider } from '../../shared/ui/item-divider/ItemDivider';
 import { ListItem } from '../../shared/ui/list-item/ListItem';
+import { Weathercodes } from '../../shared/ui/weather-icon/WeatherIcon';
 import { WeeklyListDescr } from './ui/WeeklyListDescr/WeeklyListDescr';
 
 export const WeeklyList = () => {
@@ -25,7 +26,7 @@ export const WeeklyList = () => {
                     descr={dateFormat.format(new Date(item))}
                     value={(
                       <WeeklyListDescr
-                        weathercode={daily.weathercode[count]}
+                        weathercode={daily.weathercode[count] as Weathercodes}
                         tempDay={Math.round(daily.temperature_2m_max[count])}
                         tempNight={Math.round(daily.temperature_2m_min[count])}
                       />

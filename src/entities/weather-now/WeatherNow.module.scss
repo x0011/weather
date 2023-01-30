@@ -3,26 +3,26 @@
   margin: 0 auto;
   text-align: center;
   width: 311px;
-  background-color: var(--color-sunny);
+  background-color: var(--color-bg);
   padding: 8px 0px;
-  margin-top: 25px;
   .condition {
     display: block;
   }
   .temp {
     font-weight: 400;
     font-size: 52px;
+    color: rgba(var(--color-base-text), 1);
   }
 
   .feelsLike {
     display: block;
     margin-top: 15px;
-    color: rgba(var(--color-black700), 0.55);
+    color: var(--color-second-text);
     font-weight: 400;
     font-size: 16px;
   }
   .condition {
-    color: rgba(var(--color-black700), 1);
+    color: rgba(var(--color-base-text), 1);
     margin-top: 18px;
     font-weight: 400;
     font-size: 24px;

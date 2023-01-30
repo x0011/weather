@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 import icon from './assets/points.svg';
 import { useTypedSelector } from '../../../shared/model/store';
 import { Title } from '../../../shared/ui/title/title';
+import { ActionIcon } from '../../../shared/ui/icons';
 
 export const HomeHeader = () => {
   const navigate = useNavigate();
@@ -19,24 +20,16 @@ export const HomeHeader = () => {
   return (
     <Header
       title={(
-        <Title value={location !== null ? location.name : ''}>
-          {
-          location !== null && date !== null
-            ? (
-              <span className={styles.location}>
-                {
-                  `Up to date: ${Intl.DateTimeFormat('en-EN', {
-                    timeStyle: 'short',
-                  }).format(date)}`
-                }
-              </span>
-            )
-            : null
-        }
-        </Title>
+        <Title
+          value={location !== null ? location.name : ''}
+          subheader={location !== null && date !== null
+            ? `Up to date: ${Intl.DateTimeFormat('en-EN', {
+              timeStyle: 'short',
+            }).format(date)}` : ''}
+        />
       )}
       action={
-        <RoundBtn icon={icon} onClick={actionHandler} />
+        <RoundBtn icon={<ActionIcon className={styles.icon} />} onClick={actionHandler} />
     }
     />
   );

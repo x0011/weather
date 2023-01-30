@@ -3,12 +3,12 @@ import { Temp } from '../../shared/ui/temp/temp';
 import styles from './TempDayItem.module.scss';
 import sunImg from './assets/sun.svg';
 import { Card } from '../../shared/ui/card/card';
-import { WeatherIcon } from '../../shared/ui/weather-icon/WeatherIcon';
+import { Weathercodes, WeatherIcon } from '../../shared/ui/weather-icon/WeatherIcon';
 
 interface ITempDayItem {
   temp: number,
   date: string,
-  weathercode: number,
+  weathercode: Weathercodes,
 }
 
 export const TempDayItem: React.FC<ITempDayItem> = ({ temp, date, weathercode }) => {
@@ -18,7 +18,7 @@ export const TempDayItem: React.FC<ITempDayItem> = ({ temp, date, weathercode })
     <Card>
       <div className={styles.header}>
         <div className={styles.info}>
-          <h3><Temp value={temp} /></h3>
+          <h3 className={styles.temp}><Temp value={temp} /></h3>
           <span className={styles.time}>{time}</span>
         </div>
         {/* <img src={sunImg} alt="" /> */}

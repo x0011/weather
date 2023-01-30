@@ -18,6 +18,7 @@ export const CitySelector: React.FC<ICitySelector> = ({ data }) => {
   const navigate = useNavigate();
   const selectHandler = (event: React.MouseEvent<HTMLDivElement>, item: any) => {
     dispatch(setCurrentLocation(item));
+    localStorage.setItem('location', JSON.stringify(item));
     navigate('/');
   };
 

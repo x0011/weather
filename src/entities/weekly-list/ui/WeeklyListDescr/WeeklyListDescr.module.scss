@@ -14,12 +14,13 @@
     font-size: 18px;
     line-height: 28px;
     font-family: Krona One;
+    color: rgba(var(--color-base-text), 1);
   }
   .tempNight {
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: rgba(var(--color-black700), .6);
+    color: var(--color-second-text);
   }
 }
 

@@ -6,6 +6,7 @@ import { RoundBtn } from '../../../shared/ui/roundbtn';
 import { Title } from '../../../shared/ui/title/title';
 import styles from './styles.module.scss';
 import closeIcon from './assets/icons/close.svg';
+import { CloseIcon } from '../../../shared/ui/icons';
 
 export const SelectCityHeader = () => {
   const { currentLocation: location } = useTypedSelector((state) => state.settings);
@@ -15,18 +16,18 @@ export const SelectCityHeader = () => {
   };
   return (
     <Container styles={styles.wrapper}>
-      <Title value="Select city">
-        {
-          location !== null
-            ? (
-              <span className={styles.location}>{`Current location: ${location.name}`}</span>
-            )
-            : null
-        }
-      </Title>
+      <Title
+        value="Select city"
+        subheader={location && `Current location: ${location.name}`}
+      />
       {
         location !== null
-          ? <RoundBtn icon={closeIcon} onClick={closeBtnHandler} />
+          ? (
+            <RoundBtn
+              icon={<CloseIcon className={styles.actionIcon} />}
+              onClick={closeBtnHandler}
+            />
+          )
           : null
       }
     </Container>

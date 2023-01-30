@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './WeeklyListDescr.module.scss';
 import sunImg from './assets/sun.svg';
 import { Temp } from '../../../../shared/ui/temp/temp';
-import { WeatherIcon } from '../../../../shared/ui/weather-icon/WeatherIcon';
+import { Weathercodes, WeatherIcon } from '../../../../shared/ui/weather-icon/WeatherIcon';
 
 export interface IWeeklyListDescr {
   tempDay: number,
   tempNight: number,
-  weathercode: number,
+  weathercode: Weathercodes,
   className?: string,
 }
 

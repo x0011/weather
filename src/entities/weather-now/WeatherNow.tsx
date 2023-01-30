@@ -4,10 +4,26 @@ import { useTypedSelector } from '../../shared/model/store';
 import { Temp } from '../../shared/ui/temp/temp';
 import styles from './WeatherNow.module.scss';
 
+function getYesterday(currentTime: string) {
+  if (currentTime) {
+    const date = new Date(currentTime);
+    return date.setDate(date.getDate() - 1);
+  }
+  return null;
+}
+
+function getFeelslike(forecast: any[], currentDate: number | Date) {
+  return forecast.filter((item) => {
+    return new Date(item.time).getTime() === currentDate;
+  })[0];
+}
+
 export const WeatherNow = () => {
   const { current, forecast } = useTypedSelector((state) => state.weather);
+  const yesterday = current && getYesterday(current.time);
+  const yesterdayFeelslike = (yesterday && forecast) && getFeelslike(forecast, yesterday);
   return (
-    current && forecast
+    current && forecast && yesterday && yesterdayFeelslike
       ? (
         <div className={styles.wrapper}>
           <h2 className={styles.temp}>
@@ -20,7 +36,7 @@ export const WeatherNow = () => {
             <Temp value={`${Math.round(current.feelslike)}`} />
             . Yesterday it was
             {' '}
-            <Temp value="-5" showUnit={false} />
+            <Temp value={Math.round(yesterdayFeelslike.feelslike)} showUnit={false} />
           </span>
         </div>
       )

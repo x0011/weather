@@ -9,15 +9,15 @@
 body {
   background:
   linear-gradient(
-    #CB9B31, #CB9B31 1px, transparent 0px
+    var(--color-bg-grid), var(--color-bg-grid) 1px, transparent 0px
   ),
   linear-gradient(
   90deg,
-  #CB9B31, #CB9B31 1px, transparent 0px
+  var(--color-bg-grid), var(--color-bg-grid) 1px, transparent 0px
   );
   background-size: 40px 40px;
   background-position: center -1px;
-  background-color: var(--color-sunny);
+  background-color: var(--color-bg);
   font-family: Inter;
 }
 

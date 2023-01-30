@@ -7,6 +7,15 @@ import { ItemDivider } from '../../shared/ui/item-divider/ItemDivider';
 import { ListItem } from '../../shared/ui/list-item/ListItem';
 import styles from './styles.module.scss';
 
+const ArrowIcon = () => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path className={styles.arrowStroke} d="M5 12L18 12" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="round" />
+      <path className={styles.arrowStroke} d="M12 5L19 12L12 19" strokeWidth="2.5" strokeLinecap="square" />
+    </svg>
+  );
+};
+
 export const SettingsNav = () => {
   const navigate = useNavigate();
   const { currentLocation } = useTypedSelector((state) => state.settings);
@@ -24,21 +33,29 @@ export const SettingsNav = () => {
                 ? `Current location: ${currentLocation.name}`
                 : ''
             }
-            value="sad"
+            value={
+              <ArrowIcon />
+            }
             onClick={toSelectCity}
           />
           <ItemDivider />
           <ListItem
             title="About us"
             descr="Show team"
-            value="sad"
+            value={
+              <ArrowIcon />
+            }
             onClick={() => navigate('/about')}
           />
           <ItemDivider />
           <ListItem
-            title="Error report"
+            title={
+              <a className={styles.report} href="mailto://y-panteleew@yandex.ru">Error report</a>
+            }
             descr=""
-            value="sad"
+            value={
+              <ArrowIcon />
+            }
           />
         </Card>
       </div>

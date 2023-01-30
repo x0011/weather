@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.module.scss';
 import checkIcon from './assets/icons/check.svg';
+import { CheckIcon } from '../../../../shared/ui/icons';
 
 interface IUnitSelectorItem {
   text: string,
@@ -11,7 +12,7 @@ export const UnitSelectorItem: React.FC<IUnitSelectorItem> = ({ text, active = f
   return (
     <div className={styles.wrapper}>
       <h3 className={styles.title}>{text}</h3>
-      {active ? <img src={checkIcon} alt="" /> : null}
+      {active ? <CheckIcon /> : null}
     </div>
   );
 };
