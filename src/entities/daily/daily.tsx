@@ -1,25 +1,45 @@
 import React from 'react';
 import { useTypedSelector } from '../../shared/model/store';
+import { Container } from '../../shared/ui/container/container';
 import { TempDayItem } from '../day-temp-item/TempDayItem';
 import styles from './daily.module.scss';
 
+function getTomorrow(currentTime: string) {
+  if (currentTime) {
+    const date = new Date(currentTime);
+    return date.setDate(date.getDate() + 1);
+  }
+  return null;
+}
+
 export const Daily = () => {
-  const { forecast } = useTypedSelector((state) => state.weather);
-  const currentDate = new Date();
+  const { forecast, current } = useTypedSelector((state) => state.weather);
+  const currentDateTest = current && current.time;
+  const tomorrow = currentDateTest && getTomorrow(currentDateTest);
   const daily: [] = forecast != null
     ? forecast.filter((item: any) => {
       const { time: itemTime } = item;
-      return new Date(itemTime).getDate() === currentDate.getDate();
+      const date = new Date(itemTime);
+
+      if (currentDateTest) {
+        const currentTime = new Date(currentDateTest);
+        if (date.getDate() === currentTime.getDate()) {
+          return date.getHours() >= currentTime.getHours();
+        }
+        if (tomorrow) {
+          const tomorrowTime = new Date(tomorrow);
+          return date.getDate() === tomorrowTime.getDate();
+        }
+      }
+      return false;
     })
     : [];
-  const currentHourIndex = daily.findIndex((item: any) => (
-    new Date(item.time).getHours() === currentDate.getHours()
-  ));
-  const dailyforecast:any = daily.slice(currentHourIndex);
+
   return (
-    <div className={styles.wrapper}>
-      {
-        dailyforecast.map((item: any) => (
+    <Container styles={styles.fullWidth}>
+      <div className={styles.wrapper}>
+        {
+        daily.map((item: any) => (
           <TempDayItem
             weathercode={item.weathercode}
             key={item.time}
@@ -28,6 +48,7 @@ export const Daily = () => {
           />
         ))
       }
-    </div>
+      </div>
+    </Container>
   );
 };

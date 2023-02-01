@@ -13,7 +13,7 @@ export const SettingsHeader = () => {
   };
   return (
     <Header
-      title="Additional"
+      title="Settings"
       action={
         <RoundBtn icon={<BackIcon className={styles.actionIcon} />} onClick={actionHandler} />
     }

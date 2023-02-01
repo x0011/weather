@@ -76,13 +76,19 @@ const characterCodes = [
   },
 ];
 
-const getImgByCode = (code: number) => {
+export const isSunset = (currentTime: string, sunsetTime:string) => {
+  const current = (new Date(currentTime).getTime()) / 1000;
+  const sunset = (new Date(sunsetTime).getTime()) / 1000;
+  return current > sunset;
+};
+
+const getImgByCode = (code: number, currentTime: string, sunsetTime:string) => {
   const time = new Date().getHours();
   const imgLink = characterCodes.filter((img) => {
     const { codes } = img;
     return codes.indexOf(code) !== -1;
   })[0];
-  return time > 20 || time < 8 ? imgLink.nightImg : imgLink.img;
+  return isSunset(currentTime, sunsetTime) || time < 8 ? imgLink.nightImg : imgLink.img;
 };
 
 interface ICharacter {
@@ -96,14 +102,11 @@ export const Character:React.FC<ICharacter> = ({ className }) => {
   const weathercode = current ? current.weathercode : null;
   useEffect(() => {
     if (current) {
-      const imgLink = getImgByCode(current.weathercode);
+      const imgLink = getImgByCode(current.weathercode, current.time, current.sunset);
       setCharacter(imgLink);
     }
   }, [weathercode]);
   return (
-    <Container>
-      {/* <img className={styles.img} src={img || ''} loading="eager" alt="" /> */}
-      {CharacterImg && <CharacterImg className={[styles.character, className].join(' ')} />}
-    </Container>
+    CharacterImg && <CharacterImg className={[styles.character, className].join(' ')} />
   );
 };

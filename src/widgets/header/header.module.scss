@@ -1,6 +1,10 @@
 .wrapper {
-  padding: 35px 36px 0px 24px;
+  padding-top: var(--l-space);
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.title {
+  margin-bottom: 0px;
 }

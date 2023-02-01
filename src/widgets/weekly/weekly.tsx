@@ -7,10 +7,8 @@ import styles from './weekly.module.scss';
 export const Weekly = () => {
   return (
     <div className={styles.wrapper}>
-      <Container>
-        <Title value="Forecast on 6days" />
-        <WeeklyList />
-      </Container>
+      <Title value="Forecast on 6days" />
+      <WeeklyList />
     </div>
   );
 };

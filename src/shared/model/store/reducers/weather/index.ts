@@ -1,7 +1,7 @@
 import {
   createAsyncThunk, createSlice,
 } from '@reduxjs/toolkit';
-import { WeatherV2, Units, ICoordinates } from '../../../../api/weather/weather-v2';
+import { WeatherV2, Units } from '../../../../api/weather/weather-v2';
 
 interface ICurrentWeather {
   temperature: number,
@@ -15,6 +15,24 @@ interface ICurrentWeather {
   conditiontext: number,
   surfacepressure: number,
   dewpoint: number,
+  sunrise: string,
+  sunset: string,
+}
+
+export interface ICurrentLocation {
+  id:number,
+  name: string,
+  latitude: number,
+  longitude: number,
+  elevation: number,
+  feature_code: string,
+  country_code: string,
+  admin1_id: number,
+  timezone: string,
+  population: number,
+  country_id: number,
+  country: string,
+  admin1: string
 }
 
 interface IDailyWeather {
@@ -32,7 +50,7 @@ interface IWeatherState {
 }
 
 interface IRequestData {
-  coordinates: ICoordinates,
+  currentLocation: ICurrentLocation,
   unit: Units
 }
 
@@ -47,7 +65,7 @@ export const FetchCurrentWeather = createAsyncThunk(
   'weather/fetchStatus',
   async (requestData: IRequestData) => {
     const weatherApi = new WeatherV2(requestData.unit);
-    const result = await weatherApi.getCurrent(requestData.coordinates);
+    const result = await weatherApi.getCurrent(requestData.currentLocation);
     return result;
   },
 );

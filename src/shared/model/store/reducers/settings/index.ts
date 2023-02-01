@@ -27,7 +27,7 @@ const initialState:ISettingsReducer = {
   currentUnit: Units[local.unit] || Units.C,
   searchInput: null,
   actualTime: null,
-  currentTheme: Number(localStorage.getItem('theme')) && Themes.light,
+  currentTheme: Number(localStorage.getItem('theme')) || Themes.light,
 };
 
 export const settingsReducer = createReducer(initialState, (builder) => {

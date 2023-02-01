@@ -22,6 +22,7 @@ export const HomeHeader = () => {
       title={(
         <Title
           value={location !== null ? location.name : ''}
+          spaces
           subheader={location !== null && date !== null
             ? `Up to date: ${Intl.DateTimeFormat('en-EN', {
               timeStyle: 'short',

@@ -32,7 +32,9 @@ export type Weathercodes = keyof typeof weatherCodes;
 
 interface IWeatherIcon {
   weathercode: Weathercodes,
-  className?: string
+  className?: string,
+  width?: number,
+  height?: number,
 }
 
 const weatherCodes = {
@@ -65,12 +67,16 @@ const weatherCodes = {
   99: ThunderstormHailHIcon,
 };
 
-export const WeatherIcon:React.FC<IWeatherIcon> = ({ weathercode, className }) => {
-  const [Icon, setIcon] = useState<any | null>(null);
+export const WeatherIcon:React.FC<IWeatherIcon> = ({
+  weathercode, className, width, height,
+}) => {
+  const [Icon, setIcon] = useState<React.FunctionComponent<React.SVGProps<SVGSVGElement> & {
+    title?: string | undefined;
+  }> | null>(null);
   useEffect(() => {
     setIcon(weatherCodes[weathercode]);
   }, [weathercode]);
   return (
-    Icon && <Icon className={styles.test} />
+    Icon && <Icon width={width} height={height} className={styles.icon} />
   );
 };

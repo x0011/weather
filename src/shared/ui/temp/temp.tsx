@@ -16,7 +16,7 @@ export const Temp:React.FC<ITempProps> = ({ value, showUnit = false }) => {
   // console.log(Object.keys(Units).map((item) => ));
   return (
     <>
-      {value}
+      {value > 0 ? `+${value}` : value}
       {showUnit
         ? <span className={styles.unit}>{currentUnit.slice(0, 1).toUpperCase()}</span>
         : <span className={styles.deg} />}

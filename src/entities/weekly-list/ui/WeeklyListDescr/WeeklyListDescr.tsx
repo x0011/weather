@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './WeeklyListDescr.module.scss';
-import sunImg from './assets/sun.svg';
 import { Temp } from '../../../../shared/ui/temp/temp';
 import { Weathercodes, WeatherIcon } from '../../../../shared/ui/weather-icon/WeatherIcon';
 
@@ -18,7 +17,7 @@ export const WeeklyListDescr: React.FC<IWeeklyListDescr> = (
 ) => {
   return (
     <div className={[styles.wrapper, className].join(' ')}>
-      <WeatherIcon className={styles.icon} weathercode={weathercode} />
+      <WeatherIcon width={24} height={24} className={styles.icon} weathercode={weathercode} />
       <div className={styles.temp}>
         <span className={styles.tempDay}>
           <Temp value={tempDay} />

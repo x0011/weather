@@ -9,14 +9,14 @@
 
 .title {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: var(--h3-size);
+  line-height: var(--h3-lineheight);
   color: rgba(var(--color-base-text), 1);
 }
 
 .descr {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--h4-size);
+  line-height: var(--h4-lineheight);
   color: var(--color-second-text)
 }

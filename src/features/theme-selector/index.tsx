@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAppDispatch, useTypedSelector } from '../../shared/model/store';
 import { Themes } from '../../shared/model/store/reducers/settings';
 import { Card } from '../../shared/ui/card/card';
@@ -6,9 +6,9 @@ import { Container } from '../../shared/ui/container/container';
 import { ItemDivider } from '../../shared/ui/item-divider/ItemDivider';
 import { ListItem } from '../../shared/ui/list-item/ListItem';
 import styles from './styles.module.scss';
-import selectIcon from './assets/icons/check.svg';
 import { setTheme } from '../../shared/model/store/actions/settings';
 import { CheckIcon } from '../../shared/ui/icons';
+import { Title } from '../../shared/ui/title/title';
 
 export const ThemeSelector = () => {
   const themesLength = Object.keys(Themes).length / 2;
@@ -20,13 +20,14 @@ export const ThemeSelector = () => {
     if (Themes[theme] !== Themes[currentTheme]) {
       dispatch(setTheme(theme));
       localStorage.setItem('theme', JSON.stringify(theme));
-      document.documentElement.dataset.theme = Themes[theme];
+      // document.documentElement.dataset.theme = Themes[theme];
     }
   };
 
   return (
     <Container>
       <div className={styles.wrapper}>
+        <Title value="Theme" />
         <Card>
           {
            themesMap.map((item, count, row) => {

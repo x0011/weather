@@ -40,27 +40,6 @@ export const WeeklyList = () => {
           })
           : null
       }
-      {/* {
-          conditions.map((item, count, row) => {
-            console.log(item.weathercode);
-            return (
-              <div key={new Date().getTime() + Math.random()}>
-                <ListItem
-                  title={item.condition}
-                  descr="Test description"
-                  value={(
-                    <WeeklyListDescr
-                      weathercode={item.weathercode}
-                      tempDay={12}
-                      tempNight={15}
-                    />
-                    )}
-                />
-                {row.length !== count + 1 ? <ItemDivider /> : null }
-              </div>
-            );
-          })
-      } */}
     </Card>
   );
 };

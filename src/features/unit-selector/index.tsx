@@ -7,6 +7,7 @@ import { Container } from '../../shared/ui/container/container';
 import { CheckIcon } from '../../shared/ui/icons';
 import { ItemDivider } from '../../shared/ui/item-divider/ItemDivider';
 import { ListItem } from '../../shared/ui/list-item/ListItem';
+import { Title } from '../../shared/ui/title/title';
 import styles from './style.module.scss';
 
 export const UnitSelector = () => {
@@ -25,7 +26,8 @@ export const UnitSelector = () => {
   return (
     <Container>
       <div className={styles.wrapper}>
-        <Card>
+        <Title value="Unit" />
+        <Card className={styles.units}>
           {
            unitsMap.map((item, count, row) => {
              return (

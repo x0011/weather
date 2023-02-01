@@ -1,5 +1,5 @@
 .title {
-  line-height: 40px;
+  line-height: var(--h2-lineheight);
   padding: 4px;
   background-color: var(--color-bg);
   color: rgba(var(--color-base-text), 1);
@@ -7,16 +7,20 @@
   flex-direction: column;
   align-items: flex-start;
   font-weight: 400;
-  font-size: 24px;
+  font-size: var(--h2-size);
   width: fit-content;
   margin-bottom: 8px;
 }
 
 .subheader {
-  font-size: 14px;
+  font-size: var(--h4-size);
   font-family: Inter;
   font-weight: 500;
   color: var(--color-second-text);
-  line-height: 20px;
+  line-height: var(--h4-lineheight);
   margin-top: 4px;
+}
+
+.cleanSpaces {
+  margin: 0px;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Temp } from '../../shared/ui/temp/temp';
 import styles from './TempDayItem.module.scss';
-import sunImg from './assets/sun.svg';
+import sunImg from './assets/test.svg';
 import { Card } from '../../shared/ui/card/card';
 import { Weathercodes, WeatherIcon } from '../../shared/ui/weather-icon/WeatherIcon';
 
@@ -22,7 +22,13 @@ export const TempDayItem: React.FC<ITempDayItem> = ({ temp, date, weathercode })
           <span className={styles.time}>{time}</span>
         </div>
         {/* <img src={sunImg} alt="" /> */}
-        <WeatherIcon className={styles.icon} weathercode={weathercode} />
+        <WeatherIcon
+          width={32}
+          height={32}
+          className={styles.icon}
+          weathercode={weathercode}
+        />
+        {/* <img src={sunImg} alt="" /> */}
       </div>
     </Card>
   );

@@ -3,3 +3,9 @@
   margin: 0 auto;
   padding: 0px 24px;
 }
+
+@media (min-width: 854px) {
+  .wrapper {
+    width: 824px;
+  }
+}

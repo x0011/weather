@@ -1,4 +1,17 @@
 .characterWrapper {
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: var(--l-space);
+  margin-bottom: var(--l-space);
+}
+
+.description {
+  display: block;
+}
+
+@media (min-width: 824px) {
+  .description{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px 24px;
+  }
+
 }

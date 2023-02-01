@@ -2,17 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
+  width: 90px;
   .temp {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-left: 26px;
   }
   .tempDay {
     font-weight: 400;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lineheight);
     font-family: Krona One;
     color: rgba(var(--color-base-text), 1);
   }

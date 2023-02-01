@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: start;
   .title {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lineheight);
     color: rgba(var(--color-base-text), 1);
   }
   .descr {
@@ -13,12 +13,16 @@
     line-height: 20px;
   }
   .descrText {
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    display: block;
     color: var(--color-second-text);
   }
   .value {
     font-weight: 400;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: var(--h3-size);
+    line-height: var(--h3-lineheight);
     font-family: Krona One;
     color: rgba(var(--color-base-text), 1);
   }

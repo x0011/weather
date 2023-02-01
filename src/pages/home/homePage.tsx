@@ -8,6 +8,7 @@ import { HomeHeader } from '../../widgets/header/home';
 import { Footer } from '../../widgets/footer';
 import { PagePreloader } from '../../shared/hoc/pagepreloader';
 import styles from './styles.module.scss';
+import { Container } from '../../shared/ui/container/container';
 
 const HomePage = () => (
   <>
@@ -15,8 +16,10 @@ const HomePage = () => (
     <Character className={styles.characterWrapper} />
     <WeatherNow />
     <Daily />
-    <Today />
-    <Weekly />
+    <Container styles={styles.description}>
+      <Today />
+      <Weekly />
+    </Container>
     <Footer />
   </>
 );

@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { conditions } from '../../lib/weather-codes';
+import { useTypedSelector } from '../../model/store';
+import { ICurrentLocation } from '../../model/store/reducers/weather';
 
 export enum Units {
   C = 'Celsius',
@@ -27,7 +29,8 @@ export class WeatherV2 {
     this.currentUnit = unit;
   }
 
-  async getCurrent(coordinates: ICoordinates, unit:UnitType = this.currentUnit) {
+  async getCurrent(currentLocation: ICurrentLocation, unit:UnitType = this.currentUnit) {
+    const { timezone } = currentLocation;
     const {
       data: {
         current_weather: oldCurrent,
@@ -36,20 +39,24 @@ export class WeatherV2 {
       },
     } = await axios(this.base_url, {
       params: {
-        latitude: coordinates.latitude,
-        longitude: coordinates.longitude,
+        latitude: currentLocation.latitude,
+        longitude: currentLocation.longitude,
         current_weather: true,
-        past_days: '2',
-        timezone: 'Europe/Samara',
+        past_days: '1',
+        timezone,
         temperature_unit: unit.toLowerCase(),
         hourly: 'temperature_2m,relativehumidity_2m,apparent_temperature,pressure_msl,weathercode,surface_pressure,dewpoint_2m,winddirection_10m',
-        daily: 'temperature_2m_max,temperature_2m_min,weathercode',
+        daily: 'temperature_2m_max,temperature_2m_min,weathercode,sunrise,sunset',
       },
     });
     const { time } = oldCurrent;
     const { time: forecastTime } = hourly;
     const currentTimeIndex = forecastTime.findIndex((item: string) => {
       return item === time;
+    });
+    const { time: day } = daily;
+    const currentDayIndex = day.findIndex((item:string) => {
+      return new Date(item).getDay() === new Date(time).getDay();
     });
     const current = {
       ...oldCurrent,
@@ -60,7 +67,10 @@ export class WeatherV2 {
       conditiontext: getConditionByWeathercode(hourly.weathercode[currentTimeIndex]),
       surfacepressure: hourly.surface_pressure[currentTimeIndex],
       winddirection: hourly.winddirection_10m[currentTimeIndex],
+      sunrise: daily.sunrise[currentDayIndex],
+      sunset: daily.sunset[currentDayIndex],
     };
+    console.log(current);
     const hourlyforecast = hourly.time.map((item: string, count: number) => {
       return {
         time: item,

@@ -1,22 +1,36 @@
+/* eslint-disable prefer-destructuring */
 import React, { useEffect } from 'react';
 import {
   Navigate, Route, Routes, useLocation, useNavigate,
 } from 'react-router';
+import { isSunset } from '../features/character/character';
 import { AboutPage } from '../pages/about';
 import HomePage from '../pages/home/homePage';
 import { SelectCityPage } from '../pages/select-city';
 import { SettingsPage } from '../pages/settings';
-import { Units } from '../shared/api/weather/weather-v2';
 import { ImageProvider } from '../shared/lib/imgpreloader';
 import { useAppDispatch, useTypedSelector } from '../shared/model/store';
 import { setActualtime } from '../shared/model/store/actions/settings';
 import { Themes } from '../shared/model/store/reducers/settings';
 import { FetchCurrentWeather } from '../shared/model/store/reducers/weather';
 
+const useTheme = (currentTheme: number) => {
+  document.documentElement.dataset.theme = Themes[0];
+  const { current } = useTypedSelector((state) => state.weather);
+  if (Themes[currentTheme] === 'auto' && current) {
+    if (isSunset(current.time, current.sunset)) {
+      document.documentElement.dataset.theme = Themes[0];
+    } else {
+      document.documentElement.dataset.theme = Themes[1];
+    }
+  } else {
+    document.documentElement.dataset.theme = Themes[currentTheme];
+  }
+};
+
 export const App = () => {
-  // eslint-disable-next-line prefer-destructuring
   const { currentTheme } = useTypedSelector((state) => state.settings);
-  document.documentElement.dataset.theme = Themes[currentTheme];
+  useTheme(currentTheme);
   const dispatch = useAppDispatch();
   const {
     settings: {
@@ -25,16 +39,9 @@ export const App = () => {
     },
   } = useTypedSelector((state) => state);
   useEffect(() => {
-    console.log(currentLocation);
-    const coordinates = currentLocation !== null
-      ? {
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
-      }
-      : null;
-    if (coordinates != null) {
+    if (currentLocation != null) {
       dispatch(FetchCurrentWeather({
-        coordinates,
+        currentLocation,
         unit: currentUnit,
       }));
       dispatch(setActualtime(Date().toString()));

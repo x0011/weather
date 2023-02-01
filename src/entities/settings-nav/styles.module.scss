@@ -1,11 +1,11 @@
 .wrapper {
-  margin-top: 32px;
+  margin-top: var(--l-space);
 }
 
 .report {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: var(--h3-size);
+  line-height: var(--h3-lineheight);
   font-family: Krona One;
   text-decoration: none;
   color: rgba(var(--color-base-text), 1);

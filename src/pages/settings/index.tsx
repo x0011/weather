@@ -2,6 +2,7 @@ import React from 'react';
 import { SettingsNav } from '../../entities/settings-nav';
 import { ThemeSelector } from '../../features/theme-selector';
 import { UnitSelector } from '../../features/unit-selector';
+import { Footer } from '../../widgets/footer';
 import { SettingsHeader } from '../../widgets/header/settings';
 
 export const SettingsPage = () => {
@@ -11,6 +12,7 @@ export const SettingsPage = () => {
       <SettingsNav />
       <UnitSelector />
       <ThemeSelector />
+      <Footer />
     </>
   );
 };

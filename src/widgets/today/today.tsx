@@ -8,10 +8,8 @@ import { TodayMore } from '../../entities/today-more/TodayMore';
 export const Today = () => {
   return (
     <div className={styles.wrapper}>
-      <Container>
-        <Title value="Today" />
-        <TodayMore />
-      </Container>
+      <Title value="Today" />
+      <TodayMore />
     </div>
   );
 };
