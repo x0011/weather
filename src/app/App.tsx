@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import {
   Navigate, Route, Routes, useLocation, useNavigate,
 } from 'react-router';
-import { isSunset } from '../features/character/character';
+import { isNight } from '../features/character/character';
 import { AboutPage } from '../pages/about';
 import HomePage from '../pages/home/homePage';
 import { SelectCityPage } from '../pages/select-city';
@@ -15,10 +15,9 @@ import { Themes } from '../shared/model/store/reducers/settings';
 import { FetchCurrentWeather } from '../shared/model/store/reducers/weather';
 
 const useTheme = (currentTheme: number) => {
-  document.documentElement.dataset.theme = Themes[0];
   const { current } = useTypedSelector((state) => state.weather);
   if (Themes[currentTheme] === 'auto' && current) {
-    if (isSunset(current.time, current.sunset)) {
+    if (isNight(current.time, current.sunset, current.sunrise)) {
       document.documentElement.dataset.theme = Themes[0];
     } else {
       document.documentElement.dataset.theme = Themes[1];

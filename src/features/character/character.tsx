@@ -76,19 +76,24 @@ const characterCodes = [
   },
 ];
 
-export const isSunset = (currentTime: string, sunsetTime:string) => {
+export const isNight = (currentTime: string, sunsetTime:string, sunriseTime: string) => {
   const current = (new Date(currentTime).getTime()) / 1000;
   const sunset = (new Date(sunsetTime).getTime()) / 1000;
-  return current > sunset;
+  const sunrise = (new Date(sunriseTime).getTime()) / 1000;
+  return current > sunset || current < sunrise;
 };
 
-const getImgByCode = (code: number, currentTime: string, sunsetTime:string) => {
-  const time = new Date().getHours();
+const getImgByCode = (
+  code: number,
+  currentTime: string,
+  sunsetTime:string,
+  sunriseTime: string,
+) => {
   const imgLink = characterCodes.filter((img) => {
     const { codes } = img;
     return codes.indexOf(code) !== -1;
   })[0];
-  return isSunset(currentTime, sunsetTime) || time < 8 ? imgLink.nightImg : imgLink.img;
+  return isNight(currentTime, sunsetTime, sunriseTime) ? imgLink.nightImg : imgLink.img;
 };
 
 interface ICharacter {
@@ -102,7 +107,12 @@ export const Character:React.FC<ICharacter> = ({ className }) => {
   const weathercode = current ? current.weathercode : null;
   useEffect(() => {
     if (current) {
-      const imgLink = getImgByCode(current.weathercode, current.time, current.sunset);
+      const imgLink = getImgByCode(
+        current.weathercode,
+        current.time,
+        current.sunset,
+        current.sunrise,
+      );
       setCharacter(imgLink);
     }
   }, [weathercode]);
