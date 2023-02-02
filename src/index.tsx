@@ -10,10 +10,13 @@ import { store } from './shared/model/store';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
+
+const getBasename = (path: string) => path.substr(0, path.lastIndexOf('/'));
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={getBasename(window.location.pathname)}>
         <App />
       </BrowserRouter>
     </Provider>
