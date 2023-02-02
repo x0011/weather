@@ -10,6 +10,10 @@ import { setTheme } from '../../shared/model/store/actions/settings';
 import { CheckIcon } from '../../shared/ui/icons';
 import { Title } from '../../shared/ui/title/title';
 
+function upFirstSymbol(text:string) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 export const ThemeSelector = () => {
   const themesLength = Object.keys(Themes).length / 2;
   const dispatch = useAppDispatch();
@@ -34,8 +38,9 @@ export const ThemeSelector = () => {
              return (
                <div key={item}>
                  <ListItem
-                   title={Themes[item].toString()}
+                   title={upFirstSymbol(Themes[item].toString())}
                    descr=""
+                   className={styles.themeSelector}
                    value={Themes[count] === Themes[currentTheme]
                      ? <CheckIcon className={styles.actionIcon} /> : ''}
                    onClick={() => changeTheme(count)}

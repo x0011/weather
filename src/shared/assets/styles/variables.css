@@ -10,9 +10,10 @@
   --s-space: 8px;
   --m-space: 24px;
   --l-space: 32px;
+  --width-character: 240px;
 }
 
-:root[data-theme="light"] {
+:root[data-theme="light"], :root {
   --color-bg: #FBC92D;
   --color-bg-grid: #CB9B31;
   --color-base-text: 54, 49, 48;
@@ -43,5 +44,6 @@
     --h3-size: 20px;
     --h1-lineheight: 78px;
     --l-space: 48px;
+    --width-character: 320px;
   }
 }

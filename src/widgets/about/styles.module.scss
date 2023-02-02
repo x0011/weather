@@ -1,7 +1,9 @@
-.team {
-  margin-top: var(--l-space);
-}
+// .team {
+//   margin-top: var(--l-space);
+// }
 
-.character {
-  margin-top: var(--l-space);
+.animCharacter {
+  position: relative;
+  transform: unset;
+  transform: translateX(-50%);
 }

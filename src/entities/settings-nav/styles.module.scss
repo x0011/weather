@@ -10,8 +10,7 @@
   text-decoration: none;
   color: rgba(var(--color-base-text), 1);
   &:visited {
-    color: var(--color-black);
-
+    color: rgba(var(--color-base-text), 1);
   }
 }
 

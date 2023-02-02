@@ -77,9 +77,9 @@ const characterCodes = [
 ];
 
 export const isNight = (currentTime: string, sunsetTime:string, sunriseTime: string) => {
-  const current = (new Date(currentTime).getTime()) / 1000;
-  const sunset = (new Date(sunsetTime).getTime()) / 1000;
-  const sunrise = (new Date(sunriseTime).getTime()) / 1000;
+  const current = (new Date(currentTime).getTime());
+  const sunset = (new Date(sunsetTime).getTime());
+  const sunrise = (new Date(sunriseTime).getTime());
   return current > sunset || current < sunrise;
 };
 

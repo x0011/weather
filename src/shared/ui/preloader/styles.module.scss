@@ -7,41 +7,6 @@
   }
 }
 
-// @keyframes cloudy2 {
-//   0% {
-//     transform: translateX(-10%)
-//   }
-//   100% {
-//     transform: translateX(0%)
-//   }
-// }
-
-.wrapper {
-  // position: absolute;
-  // width: 150px;
-  // height: 150px;
-  // transform: translate(-50%, -50%);
-  // top: 50%;
-  // left: 50%;
-}
-
-// .firstCloud {
-//   width: 82px;
-//   position: absolute;
-//   animation: cloudy .8s infinite;
-//   animation-direction:alternate;
-//   left: 0px;
-//   fill: rgb(255, 255, 255);
-// }
-// .secondCloud {
-//   width: 64px;
-//   position: absolute;
-//   animation: cloudy2 .7s infinite;
-//   animation-direction:alternate;
-//   fill: rgb(235, 232, 232);
-//   right: 0px;
-// }
-
 @keyframes lights {
   0% {
     transform: rotate(0deg);

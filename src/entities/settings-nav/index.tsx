@@ -50,7 +50,7 @@ export const SettingsNav = () => {
           <ItemDivider />
           <ListItem
             title={
-              <a className={styles.report} href="mailto://y-panteleew@yandex.ru">Error report</a>
+              <a className={styles.report} target="_blank" href="https://t.me/beerforlove" rel="noreferrer">Error report</a>
             }
             descr=""
             value={

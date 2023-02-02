@@ -35,7 +35,10 @@ export const UnitSelector = () => {
                  <ListItem
                    title={Units[item]}
                    descr=""
-                   value={currentUnit === Units[item] ? <CheckIcon className={styles.actionIcon} /> : ''}
+                   className={styles.unitSelector}
+                   value={currentUnit === Units[item]
+                     ? <CheckIcon className={styles.actionIcon} />
+                     : ''}
                    onClick={() => changeUnit(Units[item], item)}
                  />
                  {row.length !== count + 1 ? <ItemDivider /> : null}

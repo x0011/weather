@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router';
 import { useTypedSelector } from '../../../shared/model/store';
 import { RoundBtn } from '../../../shared/ui/roundbtn';
@@ -14,28 +13,20 @@ export const SelectCityHeader = () => {
     nav('/');
   };
   return (
-    // <Container styles={styles.wrapper}>
-    //   <Title
-    //     value="Select city"
-    //     subheader={location && `Current location: ${location.name}`}
-    //   />
-    //   {
-    //     location !== null
-    //       ? (
-    //         <RoundBtn
-    //           icon={<CloseIcon className={styles.actionIcon} />}
-    //           onClick={closeBtnHandler}
-    //         />
-    //       )
-    //       : null
-    //   }
-    // </Container>
     <Header
       title={(
-        <Title
-          value="Select city"
-          subheader={`Current location: ${location.name}`}
-        />
+        location
+          ? (
+            <Title
+              value="Select city"
+              subheader={`Current location: ${location?.name}`}
+            />
+          )
+          : (
+            <Title
+              value="Select city"
+            />
+          )
       )}
       action={
         <RoundBtn icon={<CloseIcon className={styles.icon} />} onClick={closeBtnHandler} />

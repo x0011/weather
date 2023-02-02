@@ -17,7 +17,7 @@ export const WeeklyListDescr: React.FC<IWeeklyListDescr> = (
 ) => {
   return (
     <div className={[styles.wrapper, className].join(' ')}>
-      <WeatherIcon width={24} height={24} className={styles.icon} weathercode={weathercode} />
+      <WeatherIcon width={32} height={32} className={styles.icon} weathercode={weathercode} />
       <div className={styles.temp}>
         <span className={styles.tempDay}>
           <Temp value={tempDay} />

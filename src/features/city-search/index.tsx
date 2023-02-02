@@ -16,7 +16,6 @@ export const CitySearch: React.FC = () => {
       setResults(data);
     });
   }, [city]);
-
   return (
     <>
       <input

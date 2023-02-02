@@ -70,7 +70,6 @@ export class WeatherV2 {
       sunrise: daily.sunrise[currentDayIndex],
       sunset: daily.sunset[currentDayIndex],
     };
-    console.log(current);
     const hourlyforecast = hourly.time.map((item: string, count: number) => {
       return {
         time: item,

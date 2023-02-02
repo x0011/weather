@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prefer-destructuring */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import {
-  Navigate, Route, Routes, useLocation, useNavigate,
+  Route, Routes,
 } from 'react-router';
 import { isNight } from '../features/character/character';
 import { AboutPage } from '../pages/about';
@@ -14,22 +15,24 @@ import { setActualtime } from '../shared/model/store/actions/settings';
 import { Themes } from '../shared/model/store/reducers/settings';
 import { FetchCurrentWeather } from '../shared/model/store/reducers/weather';
 
-const useTheme = (currentTheme: number) => {
+const setTheme = () => {
   const { current } = useTypedSelector((state) => state.weather);
+  const { currentTheme } = useTypedSelector((state) => state.settings);
+  const { dataset } = document.documentElement;
   if (Themes[currentTheme] === 'auto' && current) {
     if (isNight(current.time, current.sunset, current.sunrise)) {
-      document.documentElement.dataset.theme = Themes[0];
+      dataset.theme = Themes[0];
     } else {
-      document.documentElement.dataset.theme = Themes[1];
+      dataset.theme = Themes[1];
     }
   } else {
-    document.documentElement.dataset.theme = Themes[currentTheme];
+    dataset.theme = Themes[currentTheme];
   }
 };
 
 export const App = () => {
-  const { currentTheme } = useTypedSelector((state) => state.settings);
-  useTheme(currentTheme);
+  // document.documentElement.dataset.theme = Themes[1];
+  setTheme();
   const dispatch = useAppDispatch();
   const {
     settings: {

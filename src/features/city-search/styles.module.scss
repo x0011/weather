@@ -1,11 +1,16 @@
 .city {
   width: 100%;
   height: 56px;
-  background: #FFFFFF;
+  background: var(--color-second-layout);
   border: 2px solid var(--color-shadow);
   box-shadow: 4px 4px 0px var(--color-shadow);
   padding: 16px;
   font-family: Inter;
+  font-size: var(--h4-size);
+  color: rgba(var(--color-base-text), 1);
+  &::placeholder {
+    color: rgba(var(--color-base-text), .5);
+  }
   &:focus {
     outline: none;
   }
